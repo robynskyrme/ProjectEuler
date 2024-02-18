@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <math.h>
 
+// 17.2.2024, first Project Euler in C
+
 int main() {
     int n = 1;
     int t = 2;
@@ -29,7 +31,7 @@ int main() {
     }
 
     printf("%d",t);
-    printf("\ndone");
+    printf("\ndone\n");
 
     return 0;
 }
