@@ -8,9 +8,6 @@
 # 24.8.2023 -- this is more than ten times faster now that I've introduced a sieve into the prime check
 
 import time
-from hinimath import prime
-# ed. on 30.8: it works! haha (but, only if hinimath.py is in the exact same directory. that's fine, for now)
-# and you can't import the whole module at once, only individual ones from within it -- why?
 
 def sum_primes_below(max):
     n = 2

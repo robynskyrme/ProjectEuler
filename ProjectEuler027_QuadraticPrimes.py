@@ -9,7 +9,6 @@
 # that produces the maximum number of primes for consecutive values of n, starting with 0.
 
 import math
-from hinimath import prime
 
 integer_list = []
 

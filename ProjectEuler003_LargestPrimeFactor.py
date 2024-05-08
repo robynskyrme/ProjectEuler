@@ -7,7 +7,6 @@
 # -- it now completes in c. 16 seconds)
 
 import time
-from hinimath import prime
 
                             # Method returns True if m divides n with modulo zero
 def does_it_divide(m,n):
