@@ -4,6 +4,9 @@
 
 // 17.2.2024, first Project Euler in C
 
+// Run in CLion IDE 26.6.2024
+// (with correct answer!)
+
 int main() {
     int n = 1;
     int t = 2;
