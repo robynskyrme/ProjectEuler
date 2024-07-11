@@ -1,4 +1,4 @@
-# 17.9.2023
+
 # Project Euler 31: Coin Sums
 
 # In the United Kingdom the currency is made up of pound (£) and pence (p). There are eight coins in general circulation:
@@ -7,64 +7,48 @@
 #    1×£1 + 1×50p + 2×20p + 1×5p + 1×2p + 3×1p
 # How many different ways can £2 be made using any number of coins?
 
-
-coin_combinations = []
-
-def all_possible_choices_from_list_using_binary_counting(list):
-    bits = len(list)
-    max = 2 ** bits
-    format_string = "0" + str(bits) + "b"
-
-    for count in range(1,max):
-        count_as_binary = format(count,format_string)
-        make_list_of_specified_coins(count_as_binary)
-
-def make_list_of_specified_coins(coins_used_code):
-    coins_used = []
-    for bit in range(len(coins_used_code)):
-        if coins_used_code[bit] != "0":
-            coins_used.append(coins[bit])
-#    print(coins_used)
-
-    recurse_fill_using_specified_coins(goal,coins,[],0)
-
-def recurse_fill_using_specified_coins(gap,coins,coin_multiples,current_denomination):
-
-    fill = gap-gap
-
-    if coin_multiples == []:
-        for mults in range(len(coins)):
-            coin_multiples.append(0)
-
-    coin_multiples[current_denomination] += 1
-
-
-    for coin in range(len(coins)):
-        fill = fill + coins[coin] * coin_multiples[coin]
-
-        if fill == gap:
-            print(fill)
-            current_denomination += 1
-            return fill, current_denomination
-
-        if fill > gap:
-            coin_multiples *= 0
-            return fill, current_denomination
-
-    print(fill)
-    print(current_denomination)
-
-    fill, current_denomination = recurse_fill_using_specified_coins(gap,coins,coin_multiples,current_denomination)
+ # I really, really, really hate this one
 
 
 
 
-    return fill, current_denomination
+combinations = []
+
+def fill(coins,goal):
+    answer = []
+
+    # print("called with coins / goal:")
+    # print(str(coins) + " / " + str(goal))
+
+    if goal == 0:
+        return [set()]
+    if goal == min(coins):
+        return [[min(coins)]]
+
+                            # assume COINS is in descending order for now
+                            # starting from the largest,
+    for coin in coins:
+        x = goal - coin
+        if x > 0:
+
+            #print("Calling function with goal of " + str(x))
+
+            fills = fill(coins,x)
+
+            #print("fills looks like:" + str(fills))
+
+            for count in range(len(fills)):
+                combination = fills[count]
+                print("combination looks like: " + str(combination))
+                combination.append(coin)
+                answer.append(combination)
+
+    return answer
 
 
 
 
 if __name__ == "__main__":
-    coins = [5,2,1]
-    goal = 100
-    all_possible_choices_from_list_using_binary_counting(coins)
+    coins = [200,100,50,20,10,5,2,1]
+    goal = 200
+    print(fill(coins,goal))
