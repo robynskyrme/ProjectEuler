@@ -2,7 +2,6 @@
 
 # Evaluate the sum of all amicable numbers below 10000
 
-# unfinished
 
 import math
 
@@ -24,17 +23,23 @@ def sumproperfactors(n):
     factors.append(1)
 
 
-    print(factors)
+    #print(factors)
     return(sum(factors))
 
 def amicable_numbers_below(n):
 
-    print(sumproperfactors(n))
+    amicables = []
+
+    for i in range (n):
+
+        if i == sumproperfactors(sumproperfactors(i)):
+            if i != sumproperfactors(i):
+                amicables.append(i)
 
 
-
-    return [1,2,3]
+    return amicables
 
 if __name__ == "__main__":
-    list = amicable_numbers_below(100)
-    #print(sum(list))
+    list = amicable_numbers_below(10000)
+    print(list)
+    print(sum(list))
