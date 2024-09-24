@@ -2,9 +2,11 @@
 
 # Evaluate the sum of all amicable numbers below 10000
 
+# Update 24/9/2024 tried using dictionary but it was somehow slower
+
 
 import math
-
+import time
 
 
 def sumproperfactors(n):
@@ -40,6 +42,8 @@ def amicable_numbers_below(n):
     return amicables
 
 if __name__ == "__main__":
+    timer = time.time()
     list = amicable_numbers_below(10000)
     print(list)
     print(sum(list))
+    print("Done in " + str(time.time()-timer) + " seconds")
